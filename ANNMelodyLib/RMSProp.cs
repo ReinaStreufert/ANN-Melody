@@ -14,9 +14,9 @@ namespace ANNMelodyLib
                 adaptRate * MathF.Pow(deltaWeight, 2);
         }
 
-        public static float ParamDeltaRMSAdjust(float baseLearnRate, float deltaWeight, float slidingSparsity)
+        public static float ParamDeltaRMSAdjust(float weight, float correctionVec, float baseLearnRate, float slidingSparsity)
         {
-            return (baseLearnRate / MathF.Sqrt(slidingSparsity)) * deltaWeight;
+            return weight - (baseLearnRate / MathF.Sqrt(slidingSparsity)) * correctionVec;
         }
     }
 }
