@@ -12,7 +12,7 @@ namespace ANNMelodyLib
     public struct GenerativeMelodyNetwork
     {
         public float RMSPropBaseLearningRate { get; }
-        public float RMSPropBaseForgetRate { get; }
+        public float RMSPropForgetRate { get; }
         public ArrayView<float> WeightVecs { get; }
         public ArrayView<float> SparsityVecs { get; }
         public int ContextWindowLen { get; }

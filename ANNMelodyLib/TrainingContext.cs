@@ -15,7 +15,15 @@ namespace ANNMelodyLib
 
         public void AdjustNodeWeights()
         {
-            var paramsPerNode = Network.ParametersPerNode;
+            var sampleVec = SampleOutputVecs[Grid.IdxX];
+            var outputVec = Network.FindOutputVec(InputVecs);
+            var errorVec = sampleVec - outputVec;
+            for (int i = 0; i < Network.ParameterCount; i++)
+            {
+                var parameter = Network.GetParameter(i);
+                parameter.AdjustWeight(errorVec, Network.RMSPropBaseLearningRate, Network.RMSPropForgetRate);
+            }
+
         }
     }
 }
